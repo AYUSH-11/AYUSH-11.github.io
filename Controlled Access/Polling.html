@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Polling Protocol</title>
+	<style type="text/css">
+		.column {
+  	float: left;
+  	width: 16%;
+  	padding: 2px;
+	}
+
+	.row::after {
+  		content: "";
+  		clear: both;
+  		display: inline-block;
+  }
+
+  #animate1 {
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    background-color: blue;
+    padding: 5px;
+	}
+
+  </style>
+
+	<script type="text/javascript">
+
+/*
+num5 = not needed.
+num = startx.
+num1 = starty.
+num2 = endx.
+num3 = endy.
+num4 = alignment.
+*/
+
+		function secVert(startx, starty, endx, endy)
+		{
+			var doc_id = document.getElementById("verticle"); 
+        	var context = doc_id.getContext("2d"); 
+        	context.beginPath(); 
+        	context.moveTo(startx, starty);
+          context.lineWidth = 5;
+        	context.strokeStyle = 'darkgreen'; 
+        	context.lineTo(endx,endy); 
+        	context.stroke();
+		}
+		function secHoriz(startx, starty, endx, endy, text, dir)
+		{
+			var doc_id = document.getElementById("verticle"); 
+        	var context = doc_id.getContext("2d"); 
+        	context.beginPath(); 
+        	context.moveTo(startx, starty); 
+          context.lineWidth = 5;
+        	context.strokeStyle = 'darkgreen'; 
+        	context.lineTo(endx,endy); 
+        	context.stroke();
+
+			//context.font = "15px Arial";
+			//context.fillText(text+dir, startx+200, starty-15);
+		}
+
+		function startProcess()
+		{
+
+			var chk1 = document.getElementById("s1");
+			var chk2 = document.getElementById("s2");
+			var chk3 = document.getElementById("s3");
+      var chk4 = document.getElementById("s4");
+			var delay = 2000;
+      var buffer = 0;
+			primVert();
+
+			if(chk1.checked == true)
+			{
+        		setTimeout(function(){ secVert(200,10,200,150); }, delay);
+        		delay+=2000;
+        		setTimeout(function(){ secHoriz(10,30,200,30,"POLL"," >>>"); }, delay);
+        		delay+=2000;
+          //myMove(15,4,50,20,140,180,"POLL","yellow");
+
+        		setTimeout(function(){ secHoriz(10,70,200,70,"DATA"," <<<"); }, delay);
+        		delay+=2000;
+        		setTimeout(function(){ secHoriz(10,100,200,100,"ACK"," >>>"); }, delay);
+        		delay+=2000;
+			}
+			else
+			{
+        		setTimeout(function(){ secVert(200,10,200,150); }, delay);
+        		delay+=1000;
+
+        		setTimeout(function(){ secHoriz(10,30,200,30,"POLL"," >>>"); }, delay);
+        		delay+=1000;
+            setTimeout(function(){ myMove(15,4,50,20,140,180,"POLL","yellow"); }, delay);
+            delay+=3000;
+
+        		setTimeout(function(){ secHoriz(10,100,200,100,"NAK"," <<<"); }, delay);
+        		delay+=1000;
+            setTimeout(function(){ myMoveRev(18,70,50,20,140,180,"NAK","red"); }, delay);
+            delay+=3000;	
+			}
+
+			if(chk2.checked == true)
+			{
+        		setTimeout(function(){ secVert(400,10,400,250); }, delay);
+        		delay+=1000;
+        		setTimeout(function(){ secHoriz(10,180,400,180,"POLL"," >>>"); }, delay);
+        		delay+=2000;
+        		setTimeout(function(){ secHoriz(10,210,400,210,"DATA"," <<<"); }, delay);
+        		delay+=2000;
+        		setTimeout(function(){ secHoriz(10,240,400,240,"ACK"," >>>"); }, delay);
+        		delay+=2000;
+			}
+			else
+			{
+        		setTimeout(function(){ secVert(400,10,400,250); }, delay);
+        		delay+=1000;
+
+        		setTimeout(function(){ secHoriz(10,180,400,180,"POLL"," >>>"); }, delay);
+        		delay+=1000;
+            setTimeout(function(){ myMove(18,150,50,20,340,380,"POLL","yellow"); }, delay);
+            delay+=7000;
+
+        		setTimeout(function(){ secHoriz(10,240,400,240,"NAK"," <<<"); }, delay);
+        		delay+=1000;	
+            setTimeout(function(){ myMoveRev(18,210,50,20,340,380,"NAK","red"); }, delay);
+            delay+=7000;
+			}
+
+			if(chk3.checked == true)
+			{
+        		setTimeout(function(){ secVert(580,10,580,350); },delay);
+        		delay+=2000;
+        		setTimeout(function(){ secHoriz(10,270,580,270,"POLL"," >>>"); }, delay);
+        		delay+=2000;
+        		setTimeout(function(){ secHoriz(10,300,580,300,"DATA"," <<<"); }, delay);
+        		delay+=2000;
+        		setTimeout(function(){ secHoriz(10,330,580,330,"ACK"," >>>"); }, delay);
+        		delay+=2000;
+			}
+			else
+			{
+        		setTimeout(function(){ secVert(580,10,580,350); }, delay);
+        		delay+=1000;
+
+        		setTimeout(function(){ secHoriz(10,290,580,290,"POLL"," >>>"); }, delay);
+        		delay+=1000;
+            setTimeout(function(){ myMove(18,260,50,20,500,560,"POLL","yellow"); }, delay);
+            delay+=12000;
+
+        		setTimeout(function(){ secHoriz(10,330,580,330,"NAK"," <<<"); }, delay);	
+            delay+=1000;
+            setTimeout(function(){ myMoveRev(18,300,50,20,500,560,"NAK","red"); }, delay);
+            delay+=12000;
+			}
+
+      if(chk4.checked == true)
+      {
+            setTimeout(function(){ secVert(750,10,750,450); },delay);
+            delay+=2000;
+            setTimeout(function(){ secHoriz(10,360,750,360,"POLL"," >>>"); }, delay);
+            delay+=2000;
+            setTimeout(function(){ secHoriz(10,390,750,390,"DATA"," <<<"); }, delay);
+            delay+=2000;
+            setTimeout(function(){ secHoriz(10,420,750,420,"ACK"," >>>"); }, delay);
+            delay+=2000;
+      }
+      else
+      {
+            setTimeout(function(){ secVert(750,10,750,460); }, delay);
+            delay+=1000;
+
+            setTimeout(function(){ secHoriz(10,390,750,390,"POLL"," >>>"); }, delay);
+            delay+=1000;
+            setTimeout(function(){ myMove(18,360,50,20,680,730,"POLL","yellow"); }, delay);
+            delay+=14000;
+            setTimeout(function(){ secHoriz(10,450,750,450,"NAK"," <<<"); }, delay);
+            delay+=1000;
+            setTimeout(function(){ myMoveRev(18,420,50,20,680,730,"NAK","red"); }, delay); 
+      }
+
+		}
+
+		function primVert()
+		{
+			var doc_id = document.getElementById("verticle"); 
+        	var context = doc_id.getContext("2d"); 
+        	context.beginPath(); 
+        	context.moveTo(10, 10); 
+        	context.strokeStyle = 'darkgreen'; 
+        	context.lineTo(10,460);
+          context.lineWidth = 5; 
+        	context.stroke();
+
+          //context.beginPath();
+          //context.lineWidth = "4";
+          //context.strokeStyle = "green";
+          //context.fillRect(10, 10, 30, 20);
+          //context.stroke();
+		}
+
+    function myMove(rectX,rectY,rectWidth,rectHeight,end,clearWidth,txt,color) {
+
+      //var elem = document.getElementById("animate1"); 
+      var doc_id = document.getElementById("verticle"); 
+      var ctx = doc_id.getContext("2d"); 
+      var count = 0; 
+      //context.clearRect(10, 10, 30, 20);
+      var pos = parseInt(rectX);
+      var pos1=parseInt(rectY);
+      var id = setInterval(frame, 200);
+      function frame() {
+        if (pos >= parseInt(end) ) {
+          clearInterval(id);
+        } else {
+
+       // console.log("buffer: "+count*200);
+          ctx.clearRect(rectX-3, rectY-3, clearWidth ,rectHeight+7); 
+          ctx.beginPath();
+          ctx.lineWidth = 3;
+          ctx.moveTo(pos, rectY); 
+          ctx.strokeStyle = color;
+          ctx.rect(pos, rectY, rectWidth, rectHeight);
+          ctx.stroke();
+          ctx.fillText(txt,parseInt(pos-7 +(parseInt(rectWidth-7)/2)), parseInt(rectY+(parseInt(rectHeight+7)/2)));
+          //console.log("count: "+count);
+          pos+=10;
+          count+=1;
+          //elem.style.top = pos1 + "px";
+          //elem.style.top = 0 + "px";
+          //elem.style.left =pos + "px";
+        }
+        //context.clearRect(num+2, pos1, pos+20, pos1);
+        
+      }
+    }
+
+    function myMoveRev(rectX,rectY,rectWidth,rectHeight,end,clearWidth,txt,color) {
+
+      //var elem = document.getElementById("animate1"); 
+      var doc_id = document.getElementById("verticle"); 
+      var ctx = doc_id.getContext("2d"); 
+      var count = 0; 
+      //context.clearRect(10, 10, 30, 20);
+      var pos = parseInt(end);
+      var pos1=parseInt(rectY);
+      var id = setInterval(frame, 200);
+      function frame() {
+        if (pos <= parseInt(rectX) ) {
+          clearInterval(id);
+        } else {
+
+       // console.log("buffer: "+count*200);
+          ctx.clearRect(rectX-3, rectY-3, clearWidth ,rectHeight+7); 
+          ctx.beginPath();
+          ctx.lineWidth = 3;
+          ctx.moveTo(pos, rectY); 
+          ctx.strokeStyle = color;
+          ctx.rect(pos, rectY, rectWidth, rectHeight);
+          ctx.stroke();
+          ctx.fillText(txt,parseInt(pos-7 +(parseInt(rectWidth-7)/2)), parseInt(rectY+(parseInt(rectHeight+7)/2)));
+          //console.log("count: "+count);
+          pos-=10;
+          count+=1;
+          //elem.style.top = pos1 + "px";
+          //elem.style.top = 0 + "px";
+          //elem.style.left =pos + "px";
+        }
+        //context.clearRect(num+2, pos1, pos+20, pos1);
+        
+      }
+    }
+
+	</script>
+
+</head>
+<body style="background-color: skyblue;">
+  <header style="padding: 1px; text-align: center;font-family: monospace; font-size: 32px; background-color: rgb(0,255,0); ">Polling Protocol</header>
+  <table style="text-align: left;">
+    <tr>
+      <th colspan="6" rowspan="1">
+        <div style="background: blue; color: white; width: 1000px">
+        <p style="padding: 1px">HOW TO USE? SELECT SECONDARY SYSTEMS FROM WHICH YOU WANT TO SEND DATA, USING THE "CHECKBOX".</p>
+        </div>
+      </th>
+      <th rowspan="3" colspan="1">
+        <div style="background: blue; color: white; height: 230px; padding: 1px;">
+          <ul>
+            <li>POLL: Primary System asking to Secondary System if it want to send any data.</li><br>
+            <li>NAK: Secondary system sends it to Primary system when it does not want to send data.</li><br>
+            <li>DATA: Data bits sent from Secondary to Primary system.</li><br>
+            <li>ACK: Primary System send acknowledgement bits after recieving data from Secondary system.</li><br>
+          </ul>
+        </div>
+      </th>
+    </tr>
+
+
+    <tr>
+      <td>
+      <div class="row">
+  <div class="column">
+    <p style="font-size: 20px; background-color: red;">Primary System</p>
+  </div>
+  <div class="column" >
+    <form>
+      <p style="font-size: 20px;">System-1:<input type="checkbox" id="s1" name="s1" value="System-1" style="height: 20px; width: 20px;">
+        </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+      <p style="font-size: 20px;">System-2:<input type="checkbox" id="s2" name="s2" value="System-2" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+      <p style="font-size: 20px;">System-3:<input type="checkbox" id="s3" name="s3" value="System-3" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+      <p style="font-size: 20px;">System-4:<input type="checkbox" id="s4" name="s4" value="System-4" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+</div>
+  </td>
+    </tr>
+
+    <tr>
+      <td>
+       <div class="row">
+  <div class="column">
+    <img src="primary.png" alt="Primary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Scondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div>
+    <form>
+    <input type="button" name="start" value="Start" onclick="startProcess()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
+  </form>
+  </div>
+</div>
+</td>
+    </tr>
+  </table>
+  <!--
+	<div style="background: blue; color: white; width: 1000px">
+  
+		<ul>
+			<li>POLL: Primary System asking to Secondary System if it want to send any data.</li>
+			<li>NAK: Secondary system sends it to Primary system when it does not want to send data.</li>
+			<li>DATA: Data bits sent from Secondary to Primary system.</li>
+			<li>ACK: Primary System send acknowledgement bits after recieving data from Secondary system.</li>
+		</ul>
+  
+		<p style="padding: 5px">HOW TO USE? SELECT SECONDARY SYSTEMS FROM WHICH YOU WANT TO SEND DATA, USING THE "CHECKBOX".</p>
+	</div>
+  <div class="row">
+  <div class="column">
+  </div>
+  <div class="column">
+    <p>Secondary System</p>
+  </div>
+  <div class="column">
+    <p>Secondary System</p>
+  </div>
+  <div class="column">
+    <p>Secondary System</p>
+  </div>
+  <div class="column">
+    <p>Secondary System</p>
+  </div>
+</div> <br>
+
+
+	<div class="row">
+  <div class="column">
+    <p>Primary System</p>
+  </div>
+  <div class="column">
+    <form>
+    	<p style="font-size: 20px;">System-1:<input type="checkbox" id="s1" name="s1" value="System-1" style="height: 20px; width: 20px;">
+        </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+    	<p style="font-size: 20px;">System-2:<input type="checkbox" id="s2" name="s2" value="System-2" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+    	<p style="font-size: 20px;">System-3:<input type="checkbox" id="s3" name="s3" value="System-3" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+      <p style="font-size: 20px;">System-4:<input type="checkbox" id="s4" name="s4" value="System-4" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+</div> <br>
+
+	 <div class="row">
+  <div class="column">
+    <img src="primary.png" alt="Primary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Scondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div>
+  	<form>
+		<input type="button" name="start" value="Start" onclick="startProcess()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
+	</form>
+	</div>
+</div> <br>
+-->
+  <canvas id = "horizontal" width="1000" height="50">
+  </canvas>
+  <script type="text/javascript">
+    var horiz_id = document.getElementById("horizontal"); 
+    var ctx = horiz_id.getContext("2d"); 
+    ctx.beginPath(); 
+    ctx.moveTo(0,40); 
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 5; 
+    ctx.lineTo(900,40); 
+    ctx.stroke();
+
+    ctx.moveTo(40,0);
+    ctx.lineTo(40,40); 
+    ctx.stroke();
+
+    ctx.moveTo(200,0);
+    ctx.lineTo(200,40); 
+    ctx.stroke();
+
+    ctx.moveTo(400,0);
+    ctx.lineTo(400,40); 
+    ctx.stroke();
+
+    ctx.moveTo(580,0);
+    ctx.lineTo(580,40); 
+    ctx.stroke();
+
+    ctx.moveTo(750,0);
+    ctx.lineTo(750,40); 
+    ctx.stroke();
+  </script>
+	<canvas id="verticle" width="3000" height="460"> 
+    </canvas> <br><br>
+
+</body>
+</html>
