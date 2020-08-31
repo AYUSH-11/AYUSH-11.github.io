@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Polling Protocol</title>
+	<title>Select Protocol</title>
 	<style type="text/css">
 		.column {
   	float: left;
@@ -35,6 +35,115 @@ num2 = endx.
 num3 = endy.
 num4 = alignment.
 */
+    var delay = 2000;
+
+    function sA()
+    {
+      primVert();
+      setTimeout(function(){ secVert(200,10,200,200); }, delay);
+      delay+=500;
+
+      setTimeout(function(){ secHoriz(10,30,200,30,"POLL"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(15,4,50,20,140,180,"SEL","yellow"); }, delay);
+      delay+=1500;
+
+      setTimeout(function(){ secHoriz(10,80,200,80,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,50,50,20,140,180,"ACK","green"); }, delay);
+      delay+=1500;
+
+      setTimeout(function(){ secHoriz(10,130,200,130,"ACK"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(18,100,100,20,90,180,"DATA","blue"); }, delay);
+      delay+=1500;
+
+      setTimeout(function(){ secHoriz(10,190,200,190,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,160,50,20,140,180,"ACK","green"); }, delay);
+      delay = 1000;
+    }
+
+    function sB()
+    {
+      primVert();
+      setTimeout(function(){ secVert(400,10,400,200); }, delay);
+      delay+=500;
+
+      setTimeout(function(){ secHoriz(10,30,400,30,"POLL"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(15,4,50,20,340,380,"SEL","yellow"); }, delay);
+      delay+=3500;
+
+      setTimeout(function(){ secHoriz(10,80,400,80,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,50,50,20,340,380,"ACK","green"); }, delay);
+      delay+=3500;
+
+      setTimeout(function(){ secHoriz(10,130,400,130,"ACK"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(18,100,100,20,280,380,"DATA","blue"); }, delay);
+      delay+=3500;
+
+      setTimeout(function(){ secHoriz(10,190,400,190,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,160,50,20,340,380,"ACK","green"); }, delay);
+      delay = 1000;
+    }
+
+    function sC()
+    {
+      primVert();
+      setTimeout(function(){ secVert(580,10,580,200); }, delay);
+      delay+=500;
+
+      setTimeout(function(){ secHoriz(10,30,580,30,"POLL"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(15,4,50,20,500,560,"SEL","yellow"); }, delay);
+      delay+=6000;
+
+      setTimeout(function(){ secHoriz(10,80,580,80,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,50,50,20,500,560,"ACK","green"); }, delay);
+      delay+=6000;
+
+      setTimeout(function(){ secHoriz(10,130,580,130,"ACK"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(18,100,100,20,430,560,"DATA","blue"); }, delay);
+      delay+=6000;
+
+      setTimeout(function(){ secHoriz(10,190,580,190,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,160,50,20,500,560,"ACK","green"); }, delay);
+      delay = 1000;
+    }
+
+    function sD()
+    {
+      primVert();
+      setTimeout(function(){ secVert(750,10,750,200); }, delay);
+      delay+=500;
+
+      setTimeout(function(){ secHoriz(10,30,750,30,"POLL"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(15,4,50,20,680,730,"SEL","yellow"); }, delay);
+      delay+=7000;
+
+      setTimeout(function(){ secHoriz(10,80,750,80,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,50,50,20,680,730,"ACK","green"); }, delay);
+      delay+=7000;
+
+      setTimeout(function(){ secHoriz(10,130,750,130,"ACK"," >>>"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMove(18,100,100,20,630,730,"DATA","blue"); }, delay);
+      delay+=7000;
+
+      setTimeout(function(){ secHoriz(10,190,750,190,"DATA"," <<<"); }, delay);
+      delay+=1000;
+      setTimeout(function(){ myMoveRev(18,160,50,20,680,730,"ACK","green"); }, delay);
+      delay = 1000;
+    }
 
 		function secVert(startx, starty, endx, endy)
 		{
@@ -69,7 +178,7 @@ num4 = alignment.
 			var chk2 = document.getElementById("s2");
 			var chk3 = document.getElementById("s3");
       var chk4 = document.getElementById("s4");
-			var delay = 2000;
+			
       var buffer = 0;
 			primVert();
 
@@ -224,7 +333,7 @@ num4 = alignment.
         	context.beginPath(); 
         	context.moveTo(10, 10); 
         	context.strokeStyle = 'darkgreen'; 
-        	context.lineTo(10,600);
+        	context.lineTo(10,200);
           context.lineWidth = 5; 
         	context.stroke();
 
@@ -311,21 +420,20 @@ num4 = alignment.
 
 </head>
 <body style="background-color: skyblue;">
-  <header style="padding: 1px; text-align: center;font-family: monospace; font-size: 32px; background-color: rgb(0,255,0); ">Polling Protocol</header>
+  <header style="padding: 1px; text-align: center;font-family: monospace; font-size: 32px; background-color: rgb(0,255,0); ">Select Protocol</header>
   <table style="text-align: left;">
     <tr>
       <th colspan="6" rowspan="1">
         <div style="background: blue; color: white; width: 1000px">
-        <p style="padding: 1px">HOW TO USE? SELECT SECONDARY SYSTEMS FROM WHICH YOU WANT TO SEND DATA, USING THE "CHECKBOX".</p>
+        <p style="padding: 1px">HOW TO USE? SELECT SECONDARY SYSTEM TO WHICH YOU WANT TO SEND DATA, USING THE "BUTTON".</p>
         </div>
       </th>
       <th rowspan="3" colspan="1">
         <div style="background: blue; color: white; height: 230px; padding: 1px;">
           <ul>
-            <li>POLL: Primary System asking to Secondary System if it want to send any data.</li><br>
-            <li>NAK: Secondary system sends it to Primary system when it does not want to send data.</li><br>
+            <li>SEL(select): Primary System selecting a Secondary System it wants to send data to.</li><br>
             <li>DATA: Data bits sent from Secondary to Primary system.</li><br>
-            <li>ACK: Primary System send acknowledgement bits after recieving data from Secondary system.</li><br>
+            <li>ACK: Secondary System send acknowledgement bits after recieving data/select packet from Primary system.</li><br>
           </ul>
         </div>
       </th>
@@ -340,35 +448,25 @@ num4 = alignment.
   </div>
   <div class="column" >
     <form>
-      <p style="font-size: 20px;">System-1:<input type="checkbox" id="s1" name="s1" value="System-1" style="height: 20px; width: 20px;">
-        </p>
+      <input type="button" name="A" value="A" onclick="sA()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
     </form>
   </div>
   <div class="column">
     <form>
-      <p style="font-size: 20px;">System-2:<input type="checkbox" id="s2" name="s2" value="System-2" style="height: 20px; width: 20px;">
-      </p>
+      <input type="button" name="B" value="B" onclick="sB()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
     </form>
   </div>
   <div class="column">
     <form>
-      <p style="font-size: 20px;">System-3:<input type="checkbox" id="s3" name="s3" value="System-3" style="height: 20px; width: 20px;">
-      </p>
+      <input type="button" name="C" value="C" onclick="sC()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
     </form>
   </div>
   <div class="column">
     <form>
-      <p style="font-size: 20px;">System-4:<input type="checkbox" id="s4" name="s4" value="System-4" style="height: 20px; width: 20px;">
-      </p>
+      <input type="button" name="D" value="D" onclick="sD()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
     </form>
   </div>
 </div>
-  
-  <div class="column">
-    <form>
-      <input type="button" name="polling" value="Select Mode" onclick="window.location.href = 'Select.html'" style="text-align: center;padding: 15px 32px;font-size: 16px;">
-    </form>
-  </div>
   </td>
     </tr>
 
@@ -390,98 +488,16 @@ num4 = alignment.
   <div class="column">
     <img src="secondary.png" alt="Secondary" style="width:50%">
   </div>
-  <div>
-    <form>
-    <input type="button" name="start" value="Start" onclick="startProcess()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
-  </form>
-  </div>
 </div>
+  <div class="column">
+    <form>
+      <input type="button" name="polling" value="Polling Mode" onclick="window.location.href = 'Polling.html'" style="text-align: center;padding: 15px 32px;font-size: 16px;">
+    </form>
+  </div>
 </td>
     </tr>
   </table>
-  <!--
-	<div style="background: blue; color: white; width: 1000px">
   
-		<ul>
-			<li>POLL: Primary System asking to Secondary System if it want to send any data.</li>
-			<li>NAK: Secondary system sends it to Primary system when it does not want to send data.</li>
-			<li>DATA: Data bits sent from Secondary to Primary system.</li>
-			<li>ACK: Primary System send acknowledgement bits after recieving data from Secondary system.</li>
-		</ul>
-  
-		<p style="padding: 5px">HOW TO USE? SELECT SECONDARY SYSTEMS FROM WHICH YOU WANT TO SEND DATA, USING THE "CHECKBOX".</p>
-	</div>
-  <div class="row">
-  <div class="column">
-  </div>
-  <div class="column">
-    <p>Secondary System</p>
-  </div>
-  <div class="column">
-    <p>Secondary System</p>
-  </div>
-  <div class="column">
-    <p>Secondary System</p>
-  </div>
-  <div class="column">
-    <p>Secondary System</p>
-  </div>
-</div> <br>
-
-
-	<div class="row">
-  <div class="column">
-    <p>Primary System</p>
-  </div>
-  <div class="column">
-    <form>
-    	<p style="font-size: 20px;">System-1:<input type="checkbox" id="s1" name="s1" value="System-1" style="height: 20px; width: 20px;">
-        </p>
-    </form>
-  </div>
-  <div class="column">
-    <form>
-    	<p style="font-size: 20px;">System-2:<input type="checkbox" id="s2" name="s2" value="System-2" style="height: 20px; width: 20px;">
-      </p>
-    </form>
-  </div>
-  <div class="column">
-    <form>
-    	<p style="font-size: 20px;">System-3:<input type="checkbox" id="s3" name="s3" value="System-3" style="height: 20px; width: 20px;">
-      </p>
-    </form>
-  </div>
-  <div class="column">
-    <form>
-      <p style="font-size: 20px;">System-4:<input type="checkbox" id="s4" name="s4" value="System-4" style="height: 20px; width: 20px;">
-      </p>
-    </form>
-  </div>
-</div> <br>
-
-	 <div class="row">
-  <div class="column">
-    <img src="primary.png" alt="Primary" style="width:50%">
-  </div>
-  <div class="column">
-    <img src="secondary.png" alt="Scondary" style="width:50%">
-  </div>
-  <div class="column">
-    <img src="secondary.png" alt="Secondary" style="width:50%">
-  </div>
-  <div class="column">
-    <img src="secondary.png" alt="Secondary" style="width:50%">
-  </div>
-  <div class="column">
-    <img src="secondary.png" alt="Secondary" style="width:50%">
-  </div>
-  <div>
-  	<form>
-		<input type="button" name="start" value="Start" onclick="startProcess()" style="text-align: center;padding: 15px 32px;font-size: 16px;">
-	</form>
-	</div>
-</div> <br>
--->
   <canvas id = "horizontal" width="1000" height="50">
   </canvas>
   <script type="text/javascript">
